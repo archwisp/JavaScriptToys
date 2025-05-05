@@ -9,12 +9,12 @@ var Descramble =
     max_iter: 50,
     delay: 100,
 
-    init: function(ascii_art) {
+    descramble: function(target, ascii_art) {
         solved = [];
-        this.timer = setInterval(solved = this.writeAll.bind(this, ascii_art, solved), this.delay);
+        this.timer = setInterval(solved = this.writeAll.bind(this, target, ascii_art, solved), this.delay);
     },
 
-    writeAll: function(text) {
+    writeAll: function(target, text) { 
         pos = 0;
         output = [];
 
@@ -32,7 +32,7 @@ var Descramble =
                 }
             }
 
-            this.write(output.join("\n"));
+            this.write(target, output.join("\n"));
             pos++;
         }
         
@@ -45,8 +45,8 @@ var Descramble =
         return solved;
     },
 
-    write: function(out) {
-        document.getElementById("descramble").innerHTML = out;
+    write: function(target, out) { 
+        document.getElementById(target).innerHTML = out;
     },
 
     shuffle: function(array) {
